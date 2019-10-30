@@ -8,9 +8,10 @@ app = Flask(__name__)
 def course():
     return jsonify(os.listdir('./course'))
 
+
 @app.route('/exercises')
 def course():
-    return jsonify(os.listdir('./course'))
+    return jsonify(os.listdir('./exercises'))
 
 
 if __name__ == '__main__':
