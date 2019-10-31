@@ -18,6 +18,11 @@ def course():
     return jsonify(os.listdir('course'))
 
 
+@app.route('/course_dict')
+def course_dict():
+    return jsonify(list_dir('course'))
+
+
 @app.route('/course/<int:num>', methods=['GET', 'POST'])
 def subject(num):
     if request.method == 'GET':
@@ -30,6 +35,11 @@ def subject(num):
 @app.route('/exercise')
 def exercises():
     return jsonify(os.listdir('exercise'))
+
+
+@app.route('/exercise_dict')
+def exercise_dict():
+    return jsonify(list_dir('exercise'))
 
 
 @app.route('/exercise/<int:num>', methods=['GET', 'POST'])
