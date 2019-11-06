@@ -8,10 +8,13 @@
     <title>Panel</title>
 </head>
 <body>
-    <form method="post" action="/panel" enctype=multipart/form-data >
-        Folder: <select name="index">
-            {% for d in dirs %}
-            <option value={{d}}>{{d}}</option>
+    <form method="post" action="/content" enctype=multipart/form-data >
+        Nazwa (bez numeru): <input type="text" name="name"><br>
+        Plik: <input type="file" name="file"><br>
+        Hasło: <input type="password" name="password"><br>
+        Wstaw po: <select name="index">
+            {% for s in subjects %}
+            <option value={{s}}>{{s, subjects[s]}}</option>
             {% endfor %}
         </select><br>
         <input type="submit" value="Submit">

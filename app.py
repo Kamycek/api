@@ -1,11 +1,7 @@
-from flask import Flask, request, jsonify, render_template, flash, redirect, url_for
-from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify, render_template, redirect
 import os
 
-UPLOAD_FOLDER = 'content'
-
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def list_dir(dire):
@@ -18,26 +14,37 @@ def list_dir(dire):
     return data
 
 
-@app.route('/panel')
-def main():
-    return render_template('index.html', subjects=list_dir('content/Kurs JS'))
+@app.route('/')
+def index():
+    return render_template('index.html', dirs=os.listdir('content'))
+
+
+@app.route('/panel', methods=['POST'])
+def panel():
+    return render_template('panel.html', subjects=list_dir('content/{}'.format(request.form['index'])))
 
 
 @app.route('/content', methods=['GET', 'POST'])
 def content():
-    return jsonify(os.listdir('content'))
-
-
-@app.route('/content/<string:text>', methods=['GET', 'POST'])
-def content_item(text):
     if request.method == 'GET':
-        return jsonify(list_dir('content/{}'.format(text)))
+        return jsonify(os.listdir('content'))
     elif request.method == 'POST':
         file = request.files['file']
-        file_name = request.form['name']
-        file_name += '.md'
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file_name))
-        return render_template('index.html')
+        raw_file_name = request.form['name']
+        file_name = '999-' + raw_file_name + '.md'
+        files = os.listdir('content')
+        dir_name = files[int(request.form['index'])-1]
+        subjects = list_dir('content/{}'.format(dir_name))
+        subjects_list = list(subjects.values())
+        subjects_list.insert(int(request.form['index']), raw_file_name)
+        print(subjects_list)
+        file.save(os.path.join('content/{}'.format(dir_name), file_name))
+        return redirect('/')
+
+
+@app.route('/content/<string:text>')
+def content_item(text):
+    return jsonify(list_dir('content/{}'.format(text)))
 
 
 @app.route('/content/<string:text>/<string:num>')
@@ -46,11 +53,6 @@ def specified_subject(text, num):
     with open('content/{}/{}-{}'.format(text, num, fname), 'r') as file:
         data = file.read()
     return data
-
-
-@app.route('/course_dict')
-def course_dict():
-    return jsonify(list_dir('content/Kurs JS'))
 
 
 if __name__ == '__main__':
