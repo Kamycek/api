@@ -14,6 +14,10 @@ def list_dir(dire):
     return data
 
 
+def sort_files():
+    pass
+
+
 @app.route('/')
 def index():
     return render_template('index.html', dirs=os.listdir('content'))
