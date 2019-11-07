@@ -50,7 +50,7 @@ def content_item(text):
 @app.route('/content/<string:text>/<string:num>')
 def specified_subject(text, num):
     fname = list_dir('content/{}'.format(text))[num]
-    with open('content/{}/{}-{}'.format(text, num, fname), 'r') as file:
+    with open('content/{}/{}-{}.md'.format(text, num, fname), 'r') as file:
         data = file.read()
     return data
 
