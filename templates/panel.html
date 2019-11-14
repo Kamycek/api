@@ -11,10 +11,10 @@
     <form method="post" action="/content" enctype=multipart/form-data >
         Nazwa (bez numeru): <input type="text" name="name"><br>
         Plik: <input type="file" name="file"><br>
-        Hasło: <input type="password" name="password"><br>
+<!--        Hasło: <input type="password" name="password"><br>-->
         Wstaw po: <select name="index">
-            {% for s in subjects %}
-            <option value={{s}}>{{s, subjects[s]}}</option>
+            {% for s in subjects %}{
+            <option value={{s}}>{{s}}</option>
             {% endfor %}
         </select><br>
         <input type="submit" value="Submit">
