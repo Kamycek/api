@@ -12,6 +12,14 @@ def list_dir(dire):
     return data
 
 
+def update_dir(dire, title, ind):
+    """Wstawia podana nazwe na podany indeks we wskazanym pliku"""
+    data = list_dir(dire)
+    data.insert(ind, title)
+    with open('content/{}/list.json'.format(dire), 'w', encoding='utf-8') as f:
+        json.dump(data, f)
+
+
 @app.route('/')
 def index():
     return render_template('index.html', dirs=os.listdir('content'))
@@ -34,7 +42,10 @@ def content():
         files = os.listdir('content')
         dir_name = files[int(request.form['index']) - 1]  # indeks od 0 bo w html jest od 1
         file.save(os.path.join('content/{}'.format(dir_name), file_name))
-        print(request.form['index'])
+        print(dir_name)
+        print(raw_file_name)
+        print(int(request.form['index']))
+        update_dir(dir_name, raw_file_name, int(request.form['index']))
         return render_template('status.html', status="201 Created"), 201
 
 
