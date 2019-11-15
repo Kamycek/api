@@ -14,7 +14,7 @@
 <!--        Hasło: <input type="password" name="password"><br>-->
         Wstaw po: <select name="index">
             {% for s in subjects %}{
-            <option value={{s}}>{{s}}</option>
+            <option value={{loop.index}}>{{s}}</option>
             {% endfor %}
         </select><br>
         <input type="submit" value="Submit">
