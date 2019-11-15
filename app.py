@@ -4,6 +4,8 @@ import os
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 1024
 
+# TODO Automatyczna naprawa list.json
+
 
 def list_dir(dire):
     """Zwraca zawartosc pliku list.json we wskazanym folderze jako liste"""
@@ -28,7 +30,7 @@ def index():
 @app.route('/panel', methods=['POST'])
 # TODO sprawdzenie poprawnosci argumentu list_dir
 def panel():
-    return render_template('panel.html', subjects=list_dir(request.form['index']))
+    return render_template('panel.html', subjects=list_dir(request.form['index']), dir=request.form['index'])
 
 
 @app.route('/content', methods=['GET', 'POST'])
@@ -39,8 +41,7 @@ def content():
         file = request.files['file']
         raw_file_name = request.form['name']
         file_name = raw_file_name + '.md'
-        files = os.listdir('content')
-        dir_name = files[int(request.form['index']) - 1]  # indeks od 0 bo w html jest od 1
+        dir_name = request.form['dir']  # indeks od 0 bo w html jest od 1
         file.save(os.path.join('content/{}'.format(dir_name), file_name))
         print(dir_name)
         print(raw_file_name)
