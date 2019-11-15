@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 def list_dir(dire):
-    '''Zwraca zawartość pliku list.json we wskazanym folderze.'''
+    """Zwraca zawartość pliku list.json we wskazanym folderze."""
     f = open('content/{}/list.json'.format(dire), 'r')
     data = json.loads(f.read())
     return data
@@ -37,20 +37,26 @@ def content():
         dir_name = files[int(request.form['index']) - 1]
         file.save(os.path.join('content/{}'.format(dir_name), file_name))
         print(request.form['index'])
-        return redirect('/')
+        return render_template('status.html', status="201 Created"), 201
 
 
 @app.route('/content/<string:text>')
 def content_item(text):
-    return jsonify(list_dir(text))
+    if text in os.listdir('content'):
+        return jsonify(list_dir(text))
+    else:
+        return render_template('status.html', status="404 Not Found"), 404
 
 
-@app.route('/content/<string:text>/<string:num>')
+@app.route('/content/<string:text>/<int:num>')
 def specified_subject(text, num):
-    dire = list_dir(text)
-    with open('content/{}/{}.md'.format(text, dire[int(num)]), 'r', encoding='utf8') as file:
-        data = file.read()
-    return data
+    if len(list_dir(text)) > num:
+        dire = list_dir(text)
+        with open('content/{}/{}.md'.format(text, dire[num]), 'r', encoding='utf8') as file:
+            data = file.read()
+        return data
+    else:
+        return render_template('status.html', status="404 Not Found"), 404
 
 
 if __name__ == '__main__':
