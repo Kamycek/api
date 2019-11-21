@@ -8,7 +8,7 @@
     <title>Panel</title>
 </head>
 <body>
-    <form method="post" action="/panel" enctype=multipart/form-data >
+    <form method="post" action="/api/panel" enctype=multipart/form-data >
         Folder: <select name="index">
             {% for d in dirs %}
             <option value={{d}}>{{d}}</option>

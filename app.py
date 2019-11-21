@@ -22,18 +22,18 @@ def update_dir(dire, title, ind):
         json.dump(data, f)
 
 
-@app.route('/')
+@app.route('/api/')
 def index():
     return render_template('index.html', dirs=os.listdir('content'))
 
 
-@app.route('/panel', methods=['POST'])
+@app.route('/api/panel', methods=['POST'])
 # TODO sprawdzenie poprawnosci argumentu list_dir
 def panel():
     return render_template('panel.html', subjects=list_dir(request.form['index']), dir=request.form['index'])
 
 
-@app.route('/content', methods=['GET', 'POST'])
+@app.route('/api/content', methods=['GET', 'POST'])
 def content():
     if request.method == 'GET':
         return jsonify(os.listdir('content'))
@@ -43,14 +43,11 @@ def content():
         file_name = raw_file_name + '.md'
         dir_name = request.form['dir']  # indeks od 0 bo w html jest od 1
         file.save(os.path.join('content/{}'.format(dir_name), file_name))
-        print(dir_name)
-        print(raw_file_name)
-        print(int(request.form['index']))
         update_dir(dir_name, raw_file_name, int(request.form['index']))
         return render_template('status.html', status="201 Created"), 201
 
 
-@app.route('/content/<string:text>')
+@app.route('/api/content/<string:text>')
 def content_item(text):
     if text in os.listdir('content'):
         return jsonify(list_dir(text))
@@ -58,7 +55,7 @@ def content_item(text):
         return render_template('status.html', status="404 Not Found"), 404
 
 
-@app.route('/content/<string:text>/<int:num>')
+@app.route('/api/content/<string:text>/<int:num>')
 def specified_subject(text, num):
     if len(list_dir(text)) > num:
         dire = list_dir(text)
