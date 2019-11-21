@@ -9,9 +9,7 @@
 </head>
 <body>
     <form method="post" action="/api/content" enctype=multipart/form-data >
-        Folder:<select name="dir">
-            <option value={{dir}}>{{dir}}</option>
-        </select><br>
+        <input type="hidden" name="dir" value={{dir}}><br>
         Nazwa (bez numeru): <input type="text" name="name"><br>
         Plik: <input type="file" name="file"><br>
 <!--        Hasło: <input type="password" name="password"><br>-->
