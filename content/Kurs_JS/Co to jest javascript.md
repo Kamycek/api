@@ -1,9 +1,9 @@
 JavaScript to język programowania, który będziemy używać do wykonywania skryptów na stronie internetowej po stronie klienta.
 
 Javascript możemy dołączyć:
-W pliku *.html pomiędzy tagami `<script></script>`
+W pliku .html pomiędzy tagami `<script></script>`
 
-######index.html
+###### index.html
 ```html
 <!doctype html>
 <html>
@@ -15,15 +15,15 @@ W pliku *.html pomiędzy tagami `<script></script>`
     </body>
 </html>
 ```
-W zewnętrznym pliku dołączonym do pliku *.html za pomocą `<script src="myscripts.js"></script>`
+W zewnętrznym pliku dołączonym do pliku .html za pomocą `<script src="myscripts.js"></script>`
 
-######index.html
+###### index.html
 ```html
 <!doctype html>
 <html>
     <head>
         <title>Document</title>
-        <script src="script.js"></script> <!--Dołączenie zewnętrznego pliku javascrip-->
+        <script src="script.js"></script> <!--Dołączenie zewnętrznego pliku javascript-->
     </head>
     <body> 
     </body>
