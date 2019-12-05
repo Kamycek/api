@@ -44,4 +44,16 @@ x = 3.14; // BŁĄD spowodowany próbą zmiany wartości stałej
 |undefined|`undefined`|Brak wartości ustawiany przez JS|
 
 # Inne sposoby deklarowania zmiennych
-Dawnie
+Dawniej przed wprowadzeniem `let` i `const` zmienne deklarowano za pomocą `var`
+
+```js
+var x = true;
+```
+
+Możemy deklarować zmienną bez podania słowa kluczowego.
+
+```
+y = false;
+```
+
+Obie metody są niezalecane.
