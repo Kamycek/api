@@ -52,7 +52,7 @@ var x = true;
 
 Możemy deklarować zmienną bez podania słowa kluczowego.
 
-```
+```js
 y = false;
 ```
 
