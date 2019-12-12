@@ -11,6 +11,6 @@ Wyświetla wyskakujące okienko z treścią podaną jako parametr.
 ```js
 alert('Alert!');
 ```
-![](alert.jpg)
+![alert.jpg](./alert.jpg)
 
 # console.log()
