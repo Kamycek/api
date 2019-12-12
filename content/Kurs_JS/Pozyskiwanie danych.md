@@ -3,6 +3,6 @@ Funkcja prompt wyświetla okno dialogowe z treścią podaną jako parametr oraz 
 ```js
 let x = prompt('Podaj wartość', '3');
 ```
-Jako drugi parametr możemy podać domyślną wartość która wyświetli sie w oknie dialogowym.
+Jako drugi parametr możemy podać domyślną wartość która wyświetli się w oknie dialogowym.
 
-Wczytana wartość zawsze jest typu `string`. Jeżeli chcemy wykonywać na niej operacje arytmetyczne musumi zmienić jej typ na `number`.
+Wczytana wartość zawsze jest typu `string`. Jeżeli chcemy wykonywać na niej operacje arytmetyczne musimy zmienić jej typ na `number`.
