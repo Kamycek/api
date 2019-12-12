@@ -6,5 +6,11 @@ let x = 'Java';
 document.write(x, 'Script'); // Wyświetli na stronie "JavaScript"
 ```
 # alert()
+Wyświetla wyskakujące okienko z treścią podaną jako parametr.
+
+```js
+alert('Alert!');
+```
+![](alert.jpg)
 
 # console.log()
