@@ -11,7 +11,7 @@ Zmienną deklarujemy i inicjalizujemy w następujący sposób:
  np. `let wiek = 5;`
 
 W JavaScripcie zmienną deklarujemy za pomocą słowa kluczowego `let` nie podajemy typu danych,
-jest on automatycznie dostosowywany do wartości.
+jest on automatycznie dostosowywany do wartości. Zmiennej nie musimy od razu inicjalizować.
 
 Jeżeli chcemy by zmienna była ciągiem znaków (typu String) należy jej wartość zapisać w `""` lub `''`.
 Wartości typu Number nie należy umiesczać w `""` ponienaważ uniemożliwia to wykonywanie na niej operacji arytmetycznych.
@@ -40,7 +40,7 @@ x = 3.14; // BŁĄD spowodowany próbą zmiany wartości stałej
 |string|`"tekst"`|Ciąg znaków|
 |boolean|`true`|Wartość logiczna true lub false|
 |symbol|`Symbol('opis')`|Przyjmuje unikatową wartość niezależnie od opisu|
-|null|`null`|Brak wartości nigdy nie ustawiany przez JS|
+|null|`null`|Brak wartości nigdy nie ustawiany przez JS (np. niezainicjalizowan zmienna)|
 |undefined|`undefined`|Brak wartości ustawiany przez JS|
 
 # Inne sposoby deklarowania zmiennych
