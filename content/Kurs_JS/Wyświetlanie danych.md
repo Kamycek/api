@@ -13,4 +13,7 @@ alert('Alert!');
 ```
 ![alert.jpg](./alert.jpg)
 
-# console.log()
+# console.log(), console.warning, console.alert()
+Wyświetla komunikat w konsoli (ctrl+shift+i w chrome i firefoxie).
+
+![alert.jpg](./console.jpg)
